@@ -34,14 +34,13 @@ html, body {
             display: flex; /* Flex para alinhar logo e pesquisa */
             align-items: center;
             flex-direction: column;
-            position: relative;
-            top: -126px;
+            position: absolute;
         }
 
         /*** STYLES ***/
         .search {
             display: inline-block;
-            position: relative;
+            position: absolute;
             height: 45px;
             width: 10%;
             max-width: 800px; /* Define um valor máximo para a largura */
@@ -49,7 +48,7 @@ html, body {
             padding: 7px 9px;
             border: 2px solid #ffffff;
             border-radius: 25px;
-            transition: width 200ms ease, margin-left 200ms ease;
+            transition: width 1500ms ease;
             cursor: text;
         }
 
@@ -101,8 +100,11 @@ html, body {
         /**SUGGESTIONS LIST**/
         .suggestionsList {
             display: flex;
-            justify-content: center;
+            justify-content: initial;
+            flex-direction: column;
             width: 53vh;
+            position: relative;
+            top: 7%;
         }
 
         .list-group {

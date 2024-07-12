@@ -1,7 +1,7 @@
 
 
 
-//BOTÃO DE PESQUISA	
+//BOTÃO DE PESQUISA PELO ENTER
 const inputSearch = document.getElementById('inpt_search')
 inputSearch.addEventListener('keydown', function(event){
 	if(event.key == 'Enter'){
@@ -9,15 +9,41 @@ inputSearch.addEventListener('keydown', function(event){
 	}
 })
 
-//SEARCH METHOD'https://www.googleapis.com/books/v1/volumes?q=' + nameSearch;
+//SEARCH METHOD
 function search(){
 	let nameSearch = $('#inpt_search').val();
 	if(nameSearch.trim() !== ''){
 		var urlbookapi = 'https://www.googleapis.com/books/v1/volumes?q=' + nameSearch;
 		$.get(urlbookapi, function(response){
 			console.log(response);
+			
 		})
 	}
+}
+
+//DETAILS METHOD
+function bookDetails(){
+	let nameSearch = $('#inpt_search').val();
+	if(nameSearch.trim() !== ''){
+		var urlbookapi = 'https://www.googleapis.com/books/v1/volumes?q=' + nameSearch;
+		$.get(urlbookapi, function(response){
+			console.log(response);
+			$('#cardInfo >').remove();
+			if(response.items.length > 0){
+				$('#cardInfo').append('<img src="'+ response.items[0].volumeInfo.imageLinks.thumbnail +'">'+
+					'<div><h5>' + response.items[0].volumeInfo.title + '</h5>'+ 
+					'<p>' + response.items[0].volumeInfo.subtitle + '</p></div>'+
+					'<ul class="list-group list-group-flush" id="listInfoBook">'+
+                    '<li class="list-group-item">' + response.items[0].volumeInfo.authors + '</li>'+
+                    '<li class="list-group-item">' + response.items[0].volumeInfo.publishedDate + '</li>'
+				  );
+			}
+
+		})
+	} else {
+            toastr.error("Campo de pesquisa está vazio!");
+            $('#modalView').modal('hide');
+    }
 }
 
 //SEARCHE LIVE METHOD
@@ -48,35 +74,20 @@ function searchLive(){
 function selectSuggestions(titleName){
 	$('#inpt_search').val(titleName);
 	$('#suggestions').empty();
-	search();
+	bookDetails();
+	$('#modalView').modal('show');
+
 	//$('#inpt_search').val('');
 }
 
-/*DESIGN DA LOGO E BARRA DE PESQUISA */
+/*SCRIPT DA BARRA DE PESQUISA */
 
 $(document).ready(function() {
 	// Adiciona a classe active ao label e ao campo de entrada para expandir o campo ao carregar a página
 	$(".search").addClass('active');
 	$("#inpt_search").focus();
 
-	// Verifica se a barra de pesquisa deve estar expandida
-	if (localStorage.getItem('searchExpanded') === 'true') {
-		$(".search").addClass('active');
-	}
 
-	// Evento para quando o campo de entrada ganha foco
-	$("#inpt_search").on('focus', function () {
-		$(this).parent('.search').addClass('active');
-		localStorage.setItem('searchExpanded', 'true');
-	});
-
-	// Evento para quando o campo de entrada perde o foco
-	// $("#inpt_search").on('blur', function () {
-	// 	if ($(this).val().length >= 0) {
-	// 		$(this).parent('.search').removeClass('active');
-	// 		localStorage.setItem('searchExpanded', 'false');
-	// 	}
-	// });
 });
 
 
