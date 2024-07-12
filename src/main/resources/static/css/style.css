@@ -1,85 +1,111 @@
-/*** Estilização da barra de pesquisa ***/
 html, body {
-    height: 100%;
-    margin: 0;
-}
-body {
-    background: #00a2e8;
-    font: 13px monospace;
-    color: #ffffff;
-}
-p {
-    margin-top: 30px;
-}
-.cntr {
-    position: relative;
-    width: 93%;
-    height: 100%;
-    display: flex; /* Usar flex para alinhar os elementos */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center;
-    top: 270px;
-}
-/* Container da barra de pesquisa */
-.cntr-innr {
-    display: flex; /* Flex para alinhar logo e pesquisa */
-    align-items: center;
-}
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            background: #00a2e8;
+            font: 13px monospace;
+            color: #ffffff;
+        }
 
-/*** STYLES ***/
-.search {
-    display: inline-block;
-    position: relative;
-    height: 45px;
-    width: 45px;
-    box-sizing: border-box;
-    padding: 7px 9px;
-    border: 2px solid #ffffff;
-    border-radius: 25px;
-    transition: width 200ms ease, margin-left 200ms ease;
-    cursor: text;
-}
+        /*NAV BAR*/
+        .logo-navbar {
+            height: auto;
+            width: auto;
+            max-width: 162px;
+        }
 
-.search:after {
-    content: "";
-    position: absolute;
-    width: 3px;
-    height: 20px;
-    right: -8px;
-    top: 29px;
-    background: #ffffff;
-    border-radius: 2px;
-    transform: rotate(-50deg);
-    transition: all 200ms ease;
-}
+        /*BODY*/
 
-.search.active,
-.search:hover {
-    width: 800px; /* Largura ao expandir */
-}
+        p {
+            margin-top: 30px;
+        }
+        .cntr {
+            /* position: relative; */
+            width: 100%;
+            display: flex; /* Usar flex para alinhar os elementos */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center;
+            /* top: 270px; */
+            height: 100vh; /* Ajusta a altura para ocupar a tela inteira, sugestão do gpt */
+        }
+        /* Container da barra de pesquisa */
+        .cntr-innr {
+            display: flex; /* Flex para alinhar logo e pesquisa */
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            top: -126px;
+        }
 
-.search.active:after,
-.search:hover:after {
-    height: 0px;
-}
+        /*** STYLES ***/
+        .search {
+            display: inline-block;
+            position: relative;
+            height: 45px;
+            width: 10%;
+            max-width: 800px; /* Define um valor máximo para a largura */
+            box-sizing: border-box;
+            padding: 7px 9px;
+            border: 2px solid #ffffff;
+            border-radius: 25px;
+            transition: width 200ms ease, margin-left 200ms ease;
+            cursor: text;
+        }
 
-.search input {
-    width: 100%;
-    border: none;
-    box-sizing: border-box;
-    font-family: Helvetica;
-    font-size: 20px;
-    color: inherit;
-    background: transparent;
-    outline-width: 0;
-    outline: none;
-}
+        .search:after {
+            content: "";
+            position: absolute;
+            width: 3px;
+            height: 20px;
+            right: -8px;
+            top: 29px;
+            background: #ffffff;
+            border-radius: 2px;
+            transform: rotate(-50deg);
+            transition: all 200ms ease;
+        }
 
-/*** LOGO ***/
-.img__logo {
-    height: auto;
-    width: 162px;
-    left: 89px;
-    position: relative;
-    top: -2px;
-}
+        .search.active,
+        .search:hover {
+            width: 800px; /* Largura ao expandir */
+        }
+
+        .search.active:after,
+        .search:hover:after {
+            height: 0px;
+        }
+
+        .search input {
+            width: 100%;
+            border: none;
+            box-sizing: border-box;
+            font-family: Helvetica;
+            font-size: 20px;
+            color: inherit;
+            background: transparent;
+            outline-width: 0;
+            outline: none;
+        }
+
+        /*** LOGO ***/
+        .img__logo {
+            height: auto;
+            width: auto;
+            left: -20px;
+            position: relative;
+            top: 84px;
+            max-width: 162px;
+        }
+
+        /**SUGGESTIONS LIST**/
+        .suggestionsList {
+            display: flex;
+            justify-content: center;
+            width: 53vh;
+        }
+
+        .list-group {
+            width: 100%;
+            max-width: 600px; /* Define um valor máximo para a largura */
+        }
