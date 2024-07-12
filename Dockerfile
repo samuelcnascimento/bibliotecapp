@@ -11,6 +11,6 @@ FROM openjdk:21-jdk
 
 EXPOSE 8080
 
-COPY --from=build /target/bibliotecaapp-0.0.1-SNAPSHOT.jar bibliotecapp.jar
+COPY --from=build /target/bibliotecapp-0.0.1-SNAPSHOT.jar bibliotecapp.jar
 
-ENTRYPOINT ["java", "-jar", "bibliotecaapp.jar"]
+ENTRYPOINT ["java", "-jar", "bibliotecapp.jar"]
