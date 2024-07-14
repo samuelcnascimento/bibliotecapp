@@ -9,6 +9,13 @@ inputSearch.addEventListener('keydown', function(event){
 	}
 })
 
+//Logo sumir quando o menu hamburguer for ativado
+function imgHidden(){
+	const img = document.getElementById('logo');
+	console.log("opa")
+	img.classList.contains('hidden') ? img.classList.remove('hidden') : img.classList.add('hidden');
+}
+
 //SEARCH METHOD
 function search(){
 	let nameSearch = $('#inpt_search').val();
