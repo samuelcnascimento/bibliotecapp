@@ -92,17 +92,19 @@ p {
 
 /*** STYLES ***/
 
-.row{
+#row_search{
     display: flex;
     justify-content: center;
     padding-top: 220px;
     max-width: 100%;
     box-sizing: border-box;
-    margin-bottom: 37%;
+    box-sizing: border-box;
+    margin: 0;
+    margin-bottom: 42%;
     
 }
 
-.row::after {
+#row_search::after {
     content: "";
     display: table;
     clear: both;
@@ -163,15 +165,19 @@ p {
 }
 
 /**SUGGESTIONS LIST**/
-.suggestionsList {
+#suggestions {
+    max-height: 500px;
+    border-radius: 10px;
     width: 50%;
+    overflow-y: auto;
+    scrollbar-width: none; /* Para navegadores Firefox */
 }
+    
 
-.container-footer{
-    display: flex;
-    justify-content: center;
-    color: #ffffff;
-    background-color: black;
+/* Para navegadores WebKit (Chrome, Safari, Edge) */
+#suggestions::-webkit-scrollbar {
+    width: 0; /* Remove a largura da barra de rolagem */
+    background: transparent; /* Opcional: define a cor de fundo da área da barra de rolagem como transparente */
 }
 
 /*FOOTER*/
@@ -252,9 +258,9 @@ p {
         width: 100%;
     }
 
-    .row{
+    #row_search{
         display: flex;
-        margin-bottom: 100%;
+        margin-bottom: 90%;
     }
 
     .search{
@@ -265,15 +271,18 @@ p {
         width: 100%;
     }
 
-    .suggestionsList {
-        display: flex;
-        width: 90%;
+    #suggestions {
+        max-height: 330px;
+        width: 100%;
     }
 
     /*FOOTER*/
-    .footer-row {
+    .footer#row_search {
         flex-direction: column;
         align-items: center;
     }
   
 }
+
+
+  

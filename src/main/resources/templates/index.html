@@ -1,58 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Samuel Nascimento">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shotcut icon" href="img/logo-favicon.png">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <link rel="shotcut icon" th:href="@{/img/logo-favicon.png}">
     <title>Bibliotecapp</title>
 </head>
 <body>
-    <header>
-        <div class="topnav">
-          <nav>
-            <div class="container-img">
-              <a class="navbar-link-logo" href="#"><img src="img/logo-navbar.png" id="logo" class="logo-navbar" alt=""></a>
-            </div>
-            <!-- Menu hamburguer -->
-            <div class="menu-icon">
-              <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="" style="background-color: rgb(0, 230, 255); border-radius: 25px; width: 62%; float: left; margin-bottom: 10px; position: absolute;">
-                <div class="menu-content" style="display: inline;">
-                  <ul class="item_navbar-menu">
-                    <li class="nav-optn"><a href="#home">Sobre</a></li>
-                    <li class="nav-optn"><a href="#news">Cadastre-se</a></li>
-                    <li class="nav-optn"><a href="#contact">Login</a></li>
-                  </ul>
-                </div>
-              </div>
-              <nav class="navbar navbar-dark" style="float: right; padding: 0;">
-                <div class="container-fluid">
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" onclick="imgHidden()">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                </div>
-              </nav>
-            </div>
-            <ul class="item_navbar">
-              <li class="nav-optn"><a href="#home">Sobre</a></li>
-              <li class="nav-optn"><a href="#news">Cadastre-se</a></li>
-              <li class="nav-optn"><a href="#contact">Login</a></li>
-            </ul>
-          </nav>
-        </div>
+    <header th:replace="~{fragments/fragment :: header_fragment('index')}">
     </header>
     <main>
-        <section class="row">
+        <section class="row" id="row_search">
             <div class="column"> 
               <label class="search" for="inpt_search">
                   <input id="inpt_search" type="text" oninput="searchLive()" placeholder="Pesquise por títulos ou autores!" />
               </label>
             </div>
-            <div class="suggestionsList" class="column">
+            <div class="suggestionsList column">
                     <ol class="list-group list-group-numbered" id="suggestions"></ol>
-                     <!-- z-index: 1000;  -->
             </div>
         </section>
         <section>
@@ -92,14 +62,11 @@
               </div>
         </section>
     </main>
-    <footer class="footer">  
-      <div class="footer-bottom">
-          <p>&copy; 2024 Bibliotecapp. Todos os direitos reservados.</p>
-      </div>
-  </footer>
+    <footer th:replace="~{fragments/fragment :: footer_fragment}">
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="js/app.js"></script>
+    <script th:src="@{/js/app.js}"></script>
 </body>
 </html>
